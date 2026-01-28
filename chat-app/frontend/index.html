@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线聊天室</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 登录界面 -->
+        <div id="login-screen" class="screen">
+            <div class="login-form">
+                <h2>欢迎来到聊天室</h2>
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="请输入用户名" maxlength="20">
+                </div>
+                <button id="join-btn" class="btn btn-primary">加入聊天</button>
+            </div>
+        </div>
+
+        <!-- 主聊天界面 -->
+        <div id="chat-screen" class="screen hidden">
+            <div class="chat-container">
+                <!-- 侧边栏 -->
+                <div class="sidebar">
+                    <div class="user-info">
+                        <div class="current-user">
+                            <span id="current-username">用户</span>
+                        </div>
+                    </div>
+
+                    <div class="room-section">
+                        <h3>聊天室</h3>
+                        <div class="room-list">
+                            <div class="room-item active" data-room="general">
+                                <span class="room-name"># 通用聊天室</span>
+                                <span class="room-users" id="room-users-count">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="online-users-section">
+                        <h3>在线用户</h3>
+                        <div class="online-users-list" id="online-users-list">
+                            <!-- 动态生成用户列表 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 主聊天区域 -->
+                <div class="main-chat">
+                    <div class="chat-header">
+                        <h2 id="current-room-name"># 通用聊天室</h2>
+                        <button id="leave-btn" class="btn btn-secondary">离开</button>
+                    </div>
+
+                    <div class="typing-indicator" id="typing-indicator">
+                        <span></span>
+                    </div>
+
+                    <div class="messages-container" id="messages-container">
+                        <!-- 动态生成消息 -->
+                    </div>
+
+                    <div class="message-input">
+                        <form id="message-form">
+                            <input type="text" id="message-input" placeholder="输入消息..." autocomplete="off">
+                            <button type="submit" class="btn btn-send">发送</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
